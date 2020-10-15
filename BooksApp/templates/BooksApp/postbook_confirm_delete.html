@@ -1,0 +1,10 @@
+{% extends 'BooksApp/base.html' %}
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    <p>Are u sure to delete this book?</p>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'book_detail' object.id%}" class="btn btn-primary">Cancel</a>
+        </form>
+{% endblock%}

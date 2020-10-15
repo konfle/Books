@@ -1,0 +1,12 @@
+{% extends 'BooksApp/base.html' %}
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    <p><em><b>Author</b></em>: {{ object.author }}</p>
+    <p><em><b>Published date</b></em>: {{ object.published_date }}</p>
+    <p><em><b>ISBN number</b></em>: {{ object.isbn_number }}</p>
+    <p><em><b>Page count</b></em>: {{ object.page_count }}</p>
+    <p><em><b>Cover link</b></em>: {{ object.cover_link }}</p>
+    <p><em><b>Language</b></em>: {{ object.language }}</p>
+    <a href="{% url 'book_delete' object.id %}" class="save btn btn-danger">Delete</a>
+    <a href="{% url 'book_update' object.id %}" class="save btn btn-success">Edit</a>
+{% endblock %}

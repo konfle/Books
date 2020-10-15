@@ -1,0 +1,48 @@
+{% extends 'BooksApp/search_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published</th>
+        <th>ISBN</th>
+        <th>Pages</th>
+        <th>Cover link</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in filter.qs %}
+        <tr>
+          <td><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.published_date }}</td>
+          <td>{{ book.isbn_number }}</td>
+          <td>{{ book.page_count }}</td>
+          <td>{{ book.cover_link }}</td>
+          <td>{{ book.language }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{%endblock content%}
+
+<!--
+{% for book in filter.qs %}
+        <h2><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></h2>
+        <p><em><b>Author</b></em>: {{ book.author }}</p>
+        <p><em><b>Published date</b></em>: {{ book.published_date }}</p>
+        <p><em><b>ISBN number</b></em>: {{ book.isbn_number }}</p>
+        <p><em><b>Page count</b></em>: {{ book.page_count }}</p>
+        <p><em><b>Cover link</b></em>: {{ book.cover_link }}</p>
+        <p><em><b>Language</b></em>: {{ book.language }}</p>
+        {% empty %}
+        <h2>No matches for Your search sir!</h2>
+{% endfor %}
+-->
